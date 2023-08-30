@@ -17,7 +17,6 @@ class EmailReader extends React.Component {
     return (
       <div>
         <div className="col2 mt-1 pt-1">
-          {Math.random()}
           <div>
             <h2 className="title--meidum">{this.props.subject}</h2>
             <h3 className="title--small">

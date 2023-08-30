@@ -1,10 +1,15 @@
-import React from 'react';
-import '../stylesheets/HeaderForm.css';
+import React from "react";
+import "../stylesheets/HeaderForm.css";
 
 function HeaderForm() {
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    console.log("Click", ev);
+  };
+
   return (
     <form className="text-align-right">
-      <button className="form__btn">
+      <button className="form__btn" onClick={handleClick}>
         <span className="fas fa-inbox"></span>
         Recibidos
       </button>
