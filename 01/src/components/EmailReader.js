@@ -11,20 +11,21 @@ class EmailReader extends React.Component {
   }
 
   render() {
-    const { props } = this;
+
+    console.log(this.props);
 
     return (
       <div>
         <div className="col2 mt-1 pt-1">
           {Math.random()}
           <div>
-            <h2 className="title--meidum">{props.subject}</h2>
+            <h2 className="title--meidum">{this.props.subject}</h2>
             <h3 className="title--small">
               <span className="text--bold display-inline-block mr-1">
-                {props.fromName}
+                {this.props.fromName}
               </span>
               <span className="text-normal display-inline-block">
-                &lt;{props.fromEmail}&gt;
+                &lt;{this.props.fromEmail}&gt;
               </span>
             </h3>
           </div>
@@ -38,7 +39,7 @@ class EmailReader extends React.Component {
           </div>
         </div>
 
-        <p>{props.body}</p>
+        <p>{this.props.body}</p>
 
         <div className="mt-1">
           <button className="form__btn" onClick={this.handleClick}>
