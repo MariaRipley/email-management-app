@@ -37,24 +37,26 @@ const emails = [
   },
 ];
 
-function App() {
-
-  const emailsItems = emails.map((email) => {
+const renderEmails = () => {
+  return emails.map((email) => {
     return (
       <EmailItem
         key={email.id}
         from={email.fromName}
         subject={email.subject}
         time={email.date}
-  />)
+      />
+    );
   });
+};
 
+function App() {
   return (
     <div>
       <Header />
 
       <table className="table">
-        <tbody>{emailsItems}</tbody>
+        <tbody>{renderEmails()}</tbody>
       </table>
 
       <EmailReader />
