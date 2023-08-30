@@ -1,3 +1,4 @@
+import React from 'react';
 import HeaderForm from "./HeaderForm";
 import '../stylesheets/Header.css';
 
