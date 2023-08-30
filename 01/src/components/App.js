@@ -18,6 +18,19 @@ const renderEmails = () => {
   });
 };
 
+const renderEmailReader = () => {
+  return emails.map((email) => {
+    return (
+      <EmailReader 
+        key={email.id}
+        subject={email.subject}
+        fromName={email.fromName}
+        fromEmail={email.fromEmail}
+        body={email.body}/>
+    )
+  })
+}
+
 function App() {
   return (
     <div>
@@ -27,7 +40,8 @@ function App() {
         <tbody>{renderEmails()}</tbody>
       </table>
 
-      <EmailReader />
+      <div>{renderEmailReader()}</div>
+      
     </div>
   );
 }
