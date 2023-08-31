@@ -32,9 +32,14 @@ const renderEmailReader = () => {
 }
 
 function App() {
+
+  const handleInboxFilter = () => {
+    console.log('App: Me han clickado');
+  }
+
   return (
     <div>
-      <Header />
+      <Header handleHeaderClick={handleInboxFilter}/>
 
       <table className="table">
         <tbody>{renderEmails()}</tbody>

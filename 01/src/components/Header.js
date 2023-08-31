@@ -2,7 +2,10 @@ import React from 'react';
 import HeaderForm from "./HeaderForm";
 import '../stylesheets/Header.css';
 
-function Header() {
+function Header(props) {
+
+  console.log(props);
+
   return (
     <header className="col2 mb-1">
       <div>
@@ -12,7 +15,7 @@ function Header() {
         </h1>
       </div>
 
-      <HeaderForm />
+      <HeaderForm handleClick={props.handleHeaderClick}/>
     </header>
   );
 }

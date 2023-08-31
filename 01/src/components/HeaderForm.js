@@ -1,10 +1,11 @@
 import React from "react";
 import "../stylesheets/HeaderForm.css";
 
-function HeaderForm() {
+function HeaderForm(props) {
   const handleClick = (ev) => {
     ev.preventDefault();
-    console.log("Click", ev);
+    console.log('HeaderForm: Me han clickado');
+    props.handleClick();
   };
 
   return (
