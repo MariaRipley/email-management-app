@@ -2,19 +2,30 @@ import React from "react";
 import "../stylesheets/HeaderForm.css";
 
 function HeaderForm(props) {
-  const handleClick = (ev) => {
-    ev.preventDefault();
-    console.log('HeaderForm: Me han clickado');
-    props.handleClick();
-  };
+    const handleInboxFilter = ev => {
+      ev.preventDefault();
+      props.handleInboxFilter();
+    };
+
+    const handleDeleteFilter = ev => {
+      ev.preventDefault();
+      props.handleDeleteFilter();
+    };
+
+    const handleTextFilter = ev => {
+      ev.preventDefault();
+      props.handleTextFilter({
+        value: ev.target.value,
+      });
+    };
 
   return (
     <form className="text-align-right">
-      <button className="form__btn" onClick={handleClick}>
+      <button className="form__btn" onClick={handleInboxFilter}>
         <span className="fas fa-inbox"></span>
         Recibidos
       </button>
-      <button className="form__btn">
+      <button className="form__btn" onClick={handleDeleteFilter}>
         <span className="fas fa-trash"></span>
         Papelera
       </button>
@@ -22,6 +33,7 @@ function HeaderForm(props) {
         className="form__input-text"
         type="text"
         placeholder="Buscar un correo"
+        onKeyUp={handleTextFilter}
       />
     </form>
   );

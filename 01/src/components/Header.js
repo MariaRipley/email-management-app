@@ -4,8 +4,6 @@ import '../stylesheets/Header.css';
 
 function Header(props) {
 
-  console.log(props);
-
   return (
     <header className="col2 mb-1">
       <div>
@@ -15,7 +13,10 @@ function Header(props) {
         </h1>
       </div>
 
-      <HeaderForm handleClick={props.handleHeaderClick}/>
+      <HeaderForm 
+        handleInboxFilter={props.handleInboxFilter}
+        handleDeleteFilter={props.handleDeleteFilter}
+        handleTextFilter={props.handleTextFilter}/>
     </header>
   );
 }
