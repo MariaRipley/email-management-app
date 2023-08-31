@@ -38,6 +38,8 @@ function App() {
           from={email.fromName}
           subject={email.subject}
           time={email.date}
+          read={email.read}
+          deleted={email.deleted}
         />
       );
     });

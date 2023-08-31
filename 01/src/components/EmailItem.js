@@ -1,8 +1,12 @@
 import React from "react";
 
 function EmailItem(props) {
+  console.log(props);
+  let deletedClass = props.deleted === true ? 'text--decoration--through' : '';
+  let readClass = props.read === true ? 'text--bold' : '';
+
   return (
-    <tr className="cursor-pointer">
+    <tr className={`cursor-pointer ${deletedClass} ${readClass}`}>
       <td>
         <a href="./" className="text--decoration--none">
           {props.from}

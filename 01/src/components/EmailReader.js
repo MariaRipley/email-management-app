@@ -14,10 +14,10 @@ function EmailReader(props) {
           <h2 className="title--meidum">{props.subject}</h2>
           <h3 className="title--small">
             <span className="text--bold display-inline-block mr-1">
-              {this.props.fromName}
+              {props.fromName}
             </span>
             <span className="text-normal display-inline-block">
-              &lt;{this.props.fromEmail}&gt;
+              &lt;{props.fromEmail}&gt;
             </span>
           </h3>
         </div>
