@@ -70,7 +70,11 @@ function App() {
   //Filtered by inboxFilter text
 
   const renderEmails = () => {
+    const inboxFilter = inboxFilter.toLowerCase();
+
     return filteredEmails.map((email) => {
+      //Filter by inbox vs deleted
+      
       return (
         <EmailItem
           key={email.id}
