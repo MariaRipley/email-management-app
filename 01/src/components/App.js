@@ -1,24 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import EmailItem from "./EmailItem";
 import EmailReader from "./EmailReader";
-import emails from "../data/emails.json";
+import apiEmails from "../data/emails.json";
 import "../stylesheets/App.css";
 
-const renderEmails = () => {
-  return emails.map((email) => {
-    return (
-      <EmailItem
-        key={email.id}
-        from={email.fromName}
-        subject={email.subject}
-        time={email.date}
-      />
-    );
-  });
-};
-
 function App() {
+  const [emails, setEmails] = useState(apiEmails);
+  const [inboxFilter, setInboxFilter] = useState('');
+
   const handleInboxFilter = () => {
     console.log("App: Me han clickado en Recibidos");
   };
@@ -28,7 +18,29 @@ function App() {
   };
 
   const handleTextFilter = data => {
-    console.log("App: Han escrito en el campo de texto", data);
+    console.log("App: Han escrito en el campo de texto", data.value);
+    setInboxFilter(data.value.toLowerCase());
+  };
+
+  const filteredEmails = emails.filter((email) => {
+    return (
+      email.fromName.toLowerCase().includes(inboxFilter) ||
+      email.subject.toLowerCase().includes(inboxFilter) ||
+      email.body.toLowerCase().includes(inboxFilter)
+    )
+  });
+
+  const renderEmails = () => {
+    return filteredEmails.map((email) => {
+      return (
+        <EmailItem
+          key={email.id}
+          from={email.fromName}
+          subject={email.subject}
+          time={email.date}
+        />
+      );
+    });
   };
 
   return (
