@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import EmailItem from "./EmailItem";
 import EmailReader from "./EmailReader";
@@ -7,27 +7,49 @@ import "../stylesheets/App.css";
 
 function App() {
   const [emails, setEmails] = useState(apiEmails);
-  const [inboxFilter, setInboxFilter] = useState('');
+  const [inboxFilter, setInboxFilter] = useState("");
+  const [showInbox, setShowInbox] = useState(true);
 
   const handleInboxFilter = () => {
     console.log("App: Me han clickado en Recibidos");
+    setShowInbox(true);
   };
 
   const handleDeleteFilter = () => {
     console.log("App: Me han clickado en Papelera");
+    setShowInbox(false);
   };
 
-  const handleTextFilter = data => {
+  const handleTextFilter = (data) => {
     console.log("App: Han escrito en el campo de texto", data.value);
     setInboxFilter(data.value.toLowerCase());
   };
+
+  function renderFilters() {
+    const emailType = showInbox ? "recibidos" : "borrados";
+    const filterText =
+      inboxFilter === "" ? (
+        "y sin filtrar"
+      ) : (
+        <span>
+          y filtrando por <span className="text--bold"> {inboxFilter} </span>.
+        </span>
+      );
+
+    return (
+      <p className="mb-1">
+        La usuaria está visualizando los emails{" "}
+        <span className="text--bold"> {emailType} </span> {""} {filterText}
+      </p>
+    );
+  }
 
   const filteredEmails = emails.filter((email) => {
     return (
       email.fromName.toLowerCase().includes(inboxFilter) ||
       email.subject.toLowerCase().includes(inboxFilter) ||
       email.body.toLowerCase().includes(inboxFilter)
-    )
+    );
   });
 
   const renderEmails = () => {
@@ -53,6 +75,8 @@ function App() {
         handleTextFilter={handleTextFilter}
       />
 
+      {renderFilters()}
+
       <table className="table">
         <tbody>{renderEmails()}</tbody>
       </table>
@@ -63,7 +87,6 @@ function App() {
         subject={emails[0].subject}
         body={emails[0].body}
       />
-
     </div>
   );
 }
