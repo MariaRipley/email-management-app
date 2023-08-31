@@ -44,13 +44,30 @@ function App() {
     );
   }
 
-  const filteredEmails = emails.filter((email) => {
-    return (
-      email.fromName.toLowerCase().includes(inboxFilter) ||
-      email.subject.toLowerCase().includes(inboxFilter) ||
-      email.body.toLowerCase().includes(inboxFilter)
-    );
-  });
+  //Filtered by inbox vs deleted
+//   const filteredEmails = emails.filter((email) => {
+//     if (showInbox === true) {
+//       if (email.deleted === true) {
+//         return false;
+//       } else {
+//         return true;
+//       } else {
+//         if (email.deleted === true) {
+//           return true;
+//         } else {
+//           return false;
+//         }
+//       }
+//   }
+// });
+
+  //   return (
+  //     email.fromName.toLowerCase().includes(inboxFilter) ||
+  //     email.subject.toLowerCase().includes(inboxFilter) ||
+  //     email.body.toLowerCase().includes(inboxFilter)
+  //   );
+
+  //Filtered by inboxFilter text
 
   const renderEmails = () => {
     return filteredEmails.map((email) => {
